@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <style>
+      html, body {
+          height: 100%;
+      }
+
+      html {
+          display: table;
+          margin: auto;
+      }
+
+      body {
+          display: table-cell;
+          vertical-align: middle;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="links">
+      <a href="<%- playstoreLink %>">
+        <img src="https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png" alt="Play Store" width="285px"/>
+      </a>
+  
+      <a href="<%- appstoreLink %>">
+        <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="App Store" width="250px"/>
+      </a>
+    </div>
+  </body>
+</html>

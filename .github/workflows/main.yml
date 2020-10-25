@@ -1,0 +1,33 @@
+name: Main
+
+on:
+    push:
+    pull_request:
+
+env:
+    IMAGE_NAME: bot
+
+jobs:
+    main:
+        name: main
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: install node v12
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - name: yarn install
+              run: yarn install
+            - name: build
+              run: yarn run build
+            - name: lint
+              run: yarn run lint
+
+            - uses: docker/build-push-action@v1.1.0
+              if: contains(github.ref, 'master')
+              with:
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+                  repository: simon
+                  tags: latest
